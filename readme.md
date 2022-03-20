@@ -1,3 +1,6 @@
+## WARNING
+Please, do not use this fork in your project. Use the original repository. This fork, "MotionPP", was created so that CMake could build Motion's C++ code using `FetchContent()`.
+
 ## Motion Project
 
 ### License

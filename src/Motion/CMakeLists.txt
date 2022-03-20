@@ -1,5 +1,5 @@
 # include the Motion specific macros
-include(${CMAKE_SOURCE_DIR}/cmake/Macros.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/../../cmake/Macros.cmake)
 
 # add the Motion sources path
 include_directories(${CMAKE_SOURCE_DIR}/src)
@@ -23,11 +23,12 @@ if(MOTION_OS_WINDOWS)
     endif()
 endif()
 
-find_package(SFML 2.5 COMPONENTS system window graphics audio REQUIRED)
+#find_package(SFML 2.5 COMPONENTS system window graphics audio REQUIRED)
 include_directories(${SFML_INCLUDE_DIR})
 
 #find FFMPEG
 motion_set_option(FFMPEG_ROOT "" PATH "FFMPEG Root Directory")
+
 
 find_path(AVUTIL_INCLUDE_DIR libavutil/avutil.h PATHS ${FFMPEG_ROOT}/include)
 find_library(AVUTIL_LIBRARY avutil PATHS ${FFMPEG_ROOT}/lib)
@@ -46,9 +47,8 @@ find_library(SWRESAMPLE_LIBRARY swresample PATHS ${FFMPEG_ROOT}/lib)
 
 include_directories(${AVUTIL_INCLUDE_DIR} ${AVFORMAT_INCLUDE_DIR} ${AVCODEC_INCLUDE_DIR} ${SWSCALE_INCLUDE_DIR} ${SWRESAMPLE_INCLUDE_DIR})
 
-set(INCROOT ${CMAKE_SOURCE_DIR}/include/Motion)
-set(SRCROOT ${CMAKE_SOURCE_DIR}/src/Motion)
-
+set(INCROOT ${CMAKE_CURRENT_LIST_DIR}../../../include/Motion)
+set(SRCROOT ${CMAKE_CURRENT_LIST_DIR})
 # all source files
 set(SRC
     ${INCROOT}/Export.h

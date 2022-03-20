@@ -16,7 +16,7 @@ motion_set_option(CMAKE_BUILD_TYPE Release STRING "Choose the type of build (Deb
 project(Motion)
 
 # include the configuration file
-include(${CMAKE_SOURCE_DIR}/cmake/Config.cmake)
+include(${CMAKE_CURRENT_LIST_DIR}/cmake/Config.cmake)
 
 # setup version numbers
 set(VERSION_MAJOR 1)
@@ -24,7 +24,7 @@ set(VERSION_MINOR 0)
 set(VERSION_PATCH 0)
 
 # add the Motion header path
-include_directories(${CMAKE_SOURCE_DIR}/include)
+include_directories(${CMAKE_CURRENT_LIST_DIR}/include)
 
 # add an option for choosing the build type (shared or static)
 motion_set_option(BUILD_SHARED_LIBS TRUE BOOL "TRUE to build Motion as a shared library, FALSE to build it as a static library")

@@ -23,12 +23,12 @@ if(MOTION_OS_WINDOWS)
     endif()
 endif()
 
+#NOT REQUIRED
 #find_package(SFML 2.5 COMPONENTS system window graphics audio REQUIRED)
-include_directories(${SFML_INCLUDE_DIR})
+#include_directories(${SFML_INCLUDE_DIR})
 
 #find FFMPEG
 motion_set_option(FFMPEG_ROOT "" PATH "FFMPEG Root Directory")
-
 
 find_path(AVUTIL_INCLUDE_DIR libavutil/avutil.h PATHS ${FFMPEG_ROOT}/include)
 find_library(AVUTIL_LIBRARY avutil PATHS ${FFMPEG_ROOT}/lib)
@@ -47,21 +47,18 @@ find_library(SWRESAMPLE_LIBRARY swresample PATHS ${FFMPEG_ROOT}/lib)
 
 include_directories(${AVUTIL_INCLUDE_DIR} ${AVFORMAT_INCLUDE_DIR} ${AVCODEC_INCLUDE_DIR} ${SWSCALE_INCLUDE_DIR} ${SWRESAMPLE_INCLUDE_DIR})
 
-set(INCROOT ${CMAKE_CURRENT_LIST_DIR}../../../include/Motion)
+set(INCROOT ${CMAKE_CURRENT_LIST_DIR}/../../include/Motion)
 set(SRCROOT ${CMAKE_CURRENT_LIST_DIR})
+
 # all source files
 set(SRC
-    ${INCROOT}/Export.h
     ${INCROOT}/priv/AudioPacket.hpp
     ${SRCROOT}/AudioPacket.cpp
-    ${INCROOT}/AudioPlayback.h
     ${INCROOT}/AudioPlaybackBase.hpp
     ${SRCROOT}/AudioPlaybackBase.cpp
-    ${INCROOT}/DataSource.h
     ${INCROOT}/DataSource.hpp
     ${SRCROOT}/DataSource.cpp
     ${INCROOT}/Motion.hpp
-    ${SRCROOT}/MotionStructs.h
     ${INCROOT}/State.hpp
     ${INCROOT}/SFMLAudioPlayback.hpp
     ${SRCROOT}/SFMLAudioPlayback.cpp
@@ -69,11 +66,8 @@ set(SRC
     ${SRCROOT}/SFMLVideoPlayback.cpp
     ${INCROOT}/priv/VideoPacket.hpp
     ${SRCROOT}/VideoPacket.cpp
-    ${INCROOT}/VideoPlayback.h
     ${INCROOT}/VideoPlaybackBase.hpp
     ${SRCROOT}/VideoPlaybackBase.cpp
-    ${INCROOT}/Types.h
-    ${SRCROOT}/CSFMLStructs.h
 )
 
 # define the motion target
@@ -81,6 +75,6 @@ motion_add_library(Motion
                   SOURCES ${SRC}
                   DEPENDS sfml-graphics sfml-window sfml-system sfml-audio ${AVUTIL_LIBRARY} ${AVFORMAT_LIBRARY} ${AVCODEC_LIBRARY} ${SWSCALE_LIBRARY} ${SWRESAMPLE_LIBRARY})
 
-if(MOTION_OS_WINDOWS)
-    target_link_libraries(Motion legacy_stdio_definitions.lib)
-endif()
+#if(MOTION_OS_WINDOWS)
+#    target_link_libraries(Motion legacy_stdio_definitions.lib)
+#endif()

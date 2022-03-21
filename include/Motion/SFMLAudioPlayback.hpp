@@ -2,13 +2,11 @@
 #define MOTION_SFMLAUDIOPLAYBACK_HPP
 
 #include <SFML/Audio/SoundStream.hpp>
-
-#include <Motion/Export.h>
 #include <Motion/AudioPlaybackBase.hpp>
 
 namespace mt
 {
-    class MOTION_CXX_API SFMLAudioPlayback : public AudioPlaybackBase, private sf::SoundStream
+    class SFMLAudioPlayback : public AudioPlaybackBase, private sf::SoundStream
     {
     private:
         bool onGetData(Chunk& data);

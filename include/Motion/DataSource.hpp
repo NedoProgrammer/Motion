@@ -18,7 +18,6 @@
 #include <SFML/System/Time.hpp>
 #include <SFML/System/Clock.hpp>
 
-#include <Motion/Export.h>
 #include <Motion/priv/AudioPacket.hpp>
 #include <Motion/AudioPlaybackBase.hpp>
 #include <Motion/priv/VideoPacket.hpp>
@@ -28,9 +27,9 @@
 namespace mt
 {
     class VideoPlaybackBase;
-    class AudioPlayback;
+    class AudioPlaybackBase;
 
-    class MOTION_CXX_API DataSource : private sf::NonCopyable
+    class DataSource : private sf::NonCopyable
     {
         friend class VideoPlaybackBase;
         friend class AudioPlaybackBase;

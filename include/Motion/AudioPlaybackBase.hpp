@@ -15,7 +15,6 @@
 #include <SFML/System/Lock.hpp>
 #include <SFML/System/Clock.hpp>
 
-#include <Motion/Export.h>
 #include <Motion/DataSource.hpp>
 #include <Motion/priv/AudioPacket.hpp>
 #include <Motion/State.hpp>
@@ -24,7 +23,7 @@ namespace mt
 {
     class DataSource;
 
-    class MOTION_CXX_API AudioPlaybackBase : private sf::NonCopyable
+    class AudioPlaybackBase : private sf::NonCopyable
     {
         friend class DataSource;
 

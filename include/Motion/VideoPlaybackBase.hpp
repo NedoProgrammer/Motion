@@ -10,7 +10,6 @@
 #include <SFML/System/Mutex.hpp>
 #include <SFML/System/Lock.hpp>
 
-#include <Motion/Export.h>
 #include <Motion/DataSource.hpp>
 #include <Motion/State.hpp>
 #include <Motion/priv/VideoPacket.hpp>
@@ -19,7 +18,7 @@ namespace mt
 {
     class DataSource;
 
-    class MOTION_CXX_API VideoPlaybackBase : private sf::NonCopyable
+    class VideoPlaybackBase : private sf::NonCopyable
     {
         friend class DataSource;
 

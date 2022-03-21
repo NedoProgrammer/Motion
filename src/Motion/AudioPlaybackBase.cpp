@@ -1,7 +1,6 @@
 #ifndef MOTION_AUDIOPLAYBACKBASE_CPP
 #define MOTION_AUDIOPLAYBACKBASE_CPP
 
-#include <Motion/AudioPlayback.h>
 #include <Motion/AudioPlaybackBase.hpp>
 
 constexpr std::size_t FILL_SAMPLE_COUNT = 2048;
@@ -204,84 +203,6 @@ namespace mt
 
         m_offsetCorrection = OffsetCorrection;
     }
-}
-
-DummyAudioPlayback::DummyAudioPlayback(mt::DataSource& DataSource, sf::Time OffsetCorrection, mtSetupStreamCB SetupCB, mtSetPlaybackSpeedCB SetSpeedCB, mtChangeStateCB StartCB, mtChangeStateCB PauseCB, mtChangeStateCB StopCB) :
-    mt::AudioPlaybackBase(DataSource, OffsetCorrection),
-    m_setupcb(SetupCB),
-    m_setspeedcb(SetSpeedCB),
-    m_startcb(StartCB),
-    m_pausecb(PauseCB),
-    m_stopcb(StopCB)
-{ }
-
-bool DummyAudioPlayback::OnGetNextBuffer(const int16_t*& Samples, std::size_t& SampleCount)
-{
-    return GetNextBuffer(Samples, SampleCount);
-}
-
-void DummyAudioPlayback::SetupStream(unsigned int ChannelCount, int SampleRate)
-{
-    if (m_setupcb) m_setupcb(ChannelCount, SampleRate);
-}
-
-void DummyAudioPlayback::SetPlaybackSpeed(float PlaybackSpeed)
-{
-    if (m_setspeedcb) m_setspeedcb(PlaybackSpeed);
-}
-
-void DummyAudioPlayback::StartStream()
-{
-    if (m_startcb) m_startcb();
-}
-
-void DummyAudioPlayback::PauseStream()
-{
-    if (m_pausecb) m_pausecb();
-}
-
-void DummyAudioPlayback::StopStream()
-{
-    if (m_stopcb) m_stopcb();
-}
-
-mtAudioPlaybackBase* mtAudioPlaybackBase_Create(mtDataSource* DataSource, sfTime OffsetCorrection, mtSetupStreamCB SetupCB, mtSetPlaybackSpeedCB SetSpeedCB, mtChangeStateCB StartCB, mtChangeStateCB PauseCB, mtChangeStateCB StopCB)
-{
-    mtAudioPlaybackBase* audioplayback = new mtAudioPlaybackBase();
-
-    audioplayback->Value = new DummyAudioPlayback(*DataSource->Value, sf::microseconds(OffsetCorrection.microseconds), SetupCB, SetSpeedCB, StartCB, PauseCB, StopCB);
-
-    return audioplayback;
-}
-
-void mtAudioPlaybackBase_Destroy(mtAudioPlaybackBase* AudioPlayback)
-{
-    delete AudioPlayback->Value;
-    delete AudioPlayback;
-}
-
-sfBool mtAudioPlaybackBase_GetNextBuffer(mtAudioPlaybackBase* AudioPlayback, const int16_t** Samples, unsigned long* SampleCount)
-{
-    std::size_t tempSampleCount;
-    bool gotBuffer = AudioPlayback->Value->OnGetNextBuffer(*Samples, tempSampleCount);
-
-    *SampleCount = tempSampleCount;
-
-    return gotBuffer;
-}
-
-sfTime mtAudioPlaybackBase_GetOffsetCorrection(mtAudioPlaybackBase* AudioPlayback)
-{
-    sfTime retval;
-
-    retval.microseconds = AudioPlayback->Value->GetOffsetCorrection().asMicroseconds();
-
-    return retval;
-}
-
-void mtAudioPlaybackBase_SetOffsetCorrection(mtAudioPlaybackBase* AudioPlayback, sfTime OffsetCorrection)
-{
-    AudioPlayback->Value->SetOffsetCorrection(sf::microseconds(OffsetCorrection.microseconds));
 }
 
 #endif

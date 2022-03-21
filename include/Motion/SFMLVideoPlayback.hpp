@@ -10,12 +10,11 @@
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Graphics/Image.hpp>
 
-#include <Motion/Export.h>
 #include <Motion/VideoPlaybackBase.hpp>
 
 namespace mt
 {
-    class MOTION_CXX_API SFMLVideoPlayback : public VideoPlaybackBase, public sf::Drawable, public sf::Transformable
+    class SFMLVideoPlayback : public VideoPlaybackBase, public sf::Drawable, public sf::Transformable
     {
     private:
         sf::Texture m_videotexture;

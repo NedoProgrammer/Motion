@@ -1,7 +1,6 @@
 #ifndef MOTION_VIDEOPLAYBACKBASE_CPP
 #define MOTION_VIDEOPLAYBACKBASE_CPP
 
-#include <Motion/VideoPlayback.h>
 #include <Motion/VideoPlaybackBase.hpp>
 
 namespace mt
@@ -147,48 +146,6 @@ namespace mt
     {
         return m_dataSource;
     }
-}
-
-DummyVideoPlayback::DummyVideoPlayback(mt::DataSource& DataSource, mtCreateTextureCB CreateCB, mtUpdateTextureCB UpdateCB, mtClearTextureCB ClearCB) :
-    mt::VideoPlaybackBase(DataSource),
-    m_createcb(CreateCB),
-    m_updatecb(UpdateCB),
-    m_clearcb(ClearCB)
-{ }
-
-void DummyVideoPlayback::CreateTexture(int Width, int Height)
-{
-    if (m_createcb) m_createcb(Width, Height);
-}
-
-void DummyVideoPlayback::UpdateTexture(const uint8_t* RGBABuffer)
-{
-    if (m_updatecb) m_updatecb(RGBABuffer);
-}
-
-void DummyVideoPlayback::ClearTexture()
-{
-    if (m_clearcb) m_clearcb();
-}
-
-mtVideoPlaybackBase* mtVideoPlaybackBase_Create(mtDataSource* DataSource, mtCreateTextureCB CreateCB, mtUpdateTextureCB UpdateCB, mtClearTextureCB ClearCB)
-{
-    mtVideoPlaybackBase* videoplayback = new mtVideoPlaybackBase();
-
-    videoplayback->Value = new DummyVideoPlayback(*DataSource->Value, CreateCB, UpdateCB, ClearCB);
-
-    return videoplayback;
-}
-
-void mtVideoPlaybackBase_Destroy(mtVideoPlaybackBase* VideoPlayback)
-{
-    delete VideoPlayback->Value;
-    delete VideoPlayback;
-}
-
-unsigned int mtVideoPlayback_GetPlayedFrameCount(mtVideoPlaybackBase* VideoPlayback)
-{
-    return VideoPlayback->Value->GetPlayedFrameCount();
 }
 
 #endif

@@ -1,6 +1,18 @@
 ## WARNING
 Please, only use this project in CMake with `FetchContent()`. The CSFML and SFML.NET bindings were removed, since I don't use them 😅.
 
+## Usage
+```cmake
+FetchContent_Declare(
+        motion
+        GIT_REPOSITORY https://github.com/NedoProgrammer/MotionPP
+        GIT_TAG 329195a67b828dbaf812e437ea2cdc73eccc065b
+)
+message(STATUS "Fetching Motion..")
+set(FFMPEG_ROOT "YOUR_FFMPEG_DIRECTORY")
+FetchContent_MakeAvailable(motion)
+```
+
 ## Motion Project
 
 ### License

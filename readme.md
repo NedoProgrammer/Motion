@@ -6,12 +6,15 @@ Please, only use this project in CMake with `FetchContent()`. The CSFML and SFML
 FetchContent_Declare(
         motion
         GIT_REPOSITORY https://github.com/NedoProgrammer/MotionPP
-        GIT_TAG 329195a67b828dbaf812e437ea2cdc73eccc065b
+        GIT_TAG 1fca1f770c902525f5ca4fe5c0464b8d7b8abd2b
 )
 message(STATUS "Fetching Motion..")
 set(FFMPEG_ROOT "YOUR_FFMPEG_DIRECTORY")
 FetchContent_MakeAvailable(motion)
 ```
+
+## Where can I find FFMPEG?
+For Windows, install it from [here](https://github.com/GyanD/codexffmpeg/releases/tag/4.3.1-2020-11-19), unpack it somewhere and set `FFMPEG_ROOT` to the unpacked folder. That's it! 😁
 
 ## Motion Project
 

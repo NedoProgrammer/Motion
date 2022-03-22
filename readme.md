@@ -3,6 +3,7 @@ Please, only use this project in CMake with `FetchContent()`. The CSFML and SFML
 
 ## Usage
 ```cmake
+include(FetchContent)
 FetchContent_Declare(
         motion
         GIT_REPOSITORY https://github.com/NedoProgrammer/MotionPP

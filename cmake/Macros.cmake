@@ -11,6 +11,7 @@ macro(motion_add_library target)
 
     # create the target
     add_library(${target} ${THIS_SOURCES})
+    target_include_directories(${target} PUBLIC ${CMAKE_CURRENT_LIST_DIR} ${CMAKE_CURRENT_LIST_DIR}/../../include)
 
     # define the export symbol of the module
     string(REPLACE "-" "_" NAME_UPPER "${target}")

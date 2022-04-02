@@ -7,7 +7,7 @@ include(FetchContent)
 FetchContent_Declare(
         motion
         GIT_REPOSITORY https://github.com/NedoProgrammer/MotionPP
-        GIT_TAG a3df2e8a054b5b6348a3fcc85802ef41f66d020e
+        GIT_TAG fc3723db02256469d2fdabf87842a1bbb72a6847
 )
 message(STATUS "Fetching Motion..")
 set(FFMPEG_ROOT "YOUR_FFMPEG_DIRECTORY")

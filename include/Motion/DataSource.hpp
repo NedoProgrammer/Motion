@@ -23,6 +23,7 @@
 #include <Motion/priv/VideoPacket.hpp>
 #include <Motion/VideoPlaybackBase.hpp>
 #include <Motion/State.hpp>
+#include <Motion/Macros.hpp>
 
 namespace mt
 {
@@ -64,26 +65,26 @@ namespace mt
         void NotifyStateChanged(State NewState);
 
     public:
-        DataSource();
-        ~DataSource();
-        bool LoadFromFile(const std::string& Filename, bool EnableVideo = true, bool EnableAudio = true);
-        void Play();
-        void Pause();
-        void Stop();
-        bool HasVideo() const;
-        bool HasAudio() const;
-        sf::Vector2i GetVideoSize() const;
-        State GetState() const;
-        sf::Time GetVideoFrameTime() const;
-        int GetAudioChannelCount() const;
-        int GetAudioSampleRate() const;
-        sf::Time GetFileLength() const;
-        sf::Time GetPlayingOffset() const;
-        void SetPlayingOffset(sf::Time PlayingOffset);
-        void Update();
-        float GetPlaybackSpeed() const;
-        void SetPlaybackSpeed(float PlaybackSpeed);
-        bool IsEndofFileReached() const;
+        MOTION_API DataSource();
+	    MOTION_API ~DataSource();
+	    MOTION_API bool LoadFromFile(const std::string& Filename, bool EnableVideo = true, bool EnableAudio = true);
+	    MOTION_API void Play();
+	    MOTION_API void Pause();
+	    MOTION_API void Stop();
+	    MOTION_API bool HasVideo() const;
+	    MOTION_API bool HasAudio() const;
+	    MOTION_API sf::Vector2i GetVideoSize() const;
+	    MOTION_API State GetState() const;
+	    MOTION_API sf::Time GetVideoFrameTime() const;
+	    MOTION_API int GetAudioChannelCount() const;
+	    MOTION_API int GetAudioSampleRate() const;
+	    MOTION_API sf::Time GetFileLength() const;
+	    MOTION_API sf::Time GetPlayingOffset() const;
+	    MOTION_API void SetPlayingOffset(sf::Time PlayingOffset);
+	    MOTION_API void Update();
+	    MOTION_API float GetPlaybackSpeed() const;
+	    MOTION_API void SetPlaybackSpeed(float PlaybackSpeed);
+	    MOTION_API bool IsEndofFileReached() const;
     };
 }
 

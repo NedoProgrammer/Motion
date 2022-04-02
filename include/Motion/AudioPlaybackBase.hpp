@@ -18,6 +18,7 @@
 #include <Motion/DataSource.hpp>
 #include <Motion/priv/AudioPacket.hpp>
 #include <Motion/State.hpp>
+#include <Motion/Macros.hpp>
 
 namespace mt
 {
@@ -48,9 +49,9 @@ namespace mt
         void Update(sf::Time DeltaTime);
 
     public:
-        virtual ~AudioPlaybackBase();
-        sf::Time GetOffsetCorrection();
-        void SetOffsetCorrection(sf::Time OffsetCorrection);
+        MOTION_API virtual ~AudioPlaybackBase();
+        MOTION_API sf::Time GetOffsetCorrection();
+        MOTION_API void SetOffsetCorrection(sf::Time OffsetCorrection);
 
     protected:
         AudioPlaybackBase(DataSource& DataSource, sf::Time OffsetCorrection = sf::milliseconds(50));

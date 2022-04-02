@@ -13,6 +13,7 @@
 #include <Motion/DataSource.hpp>
 #include <Motion/State.hpp>
 #include <Motion/priv/VideoPacket.hpp>
+#include <Motion/Macros.hpp>
 
 namespace mt
 {
@@ -39,8 +40,8 @@ namespace mt
         void Update(sf::Time DeltaTime);
 
     public:
-        virtual ~VideoPlaybackBase();
-        unsigned int GetPlayedFrameCount() const;
+        MOTION_API virtual ~VideoPlaybackBase();
+        MOTION_API unsigned int GetPlayedFrameCount() const;
 
     protected:
         VideoPlaybackBase(DataSource& DataSource);

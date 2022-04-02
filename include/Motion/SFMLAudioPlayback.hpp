@@ -3,6 +3,7 @@
 
 #include <SFML/Audio/SoundStream.hpp>
 #include <Motion/AudioPlaybackBase.hpp>
+#include <Motion/Macros.hpp>
 
 namespace mt
 {
@@ -13,9 +14,9 @@ namespace mt
         void onSeek(sf::Time timeOffset);
 
     public:
-        SFMLAudioPlayback(DataSource& DataSource, sf::Time OffsetCorrection = sf::milliseconds(50));
-        const float GetVolume();
-        void SetVolume(float Volume);
+        MOTION_API SFMLAudioPlayback(DataSource& DataSource, sf::Time OffsetCorrection = sf::milliseconds(50));
+	    MOTION_API const float GetVolume();
+	    MOTION_API void SetVolume(float Volume);
 
     protected:
         void SetupStream(unsigned int ChannelCount, int SampleRate);

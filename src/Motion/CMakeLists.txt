@@ -59,6 +59,7 @@ set(SRC
     ${INCROOT}/DataSource.hpp
     ${SRCROOT}/DataSource.cpp
     ${INCROOT}/Motion.hpp
+    ${INCROOT}/Macros.hpp
     ${INCROOT}/State.hpp
     ${INCROOT}/SFMLAudioPlayback.hpp
     ${SRCROOT}/SFMLAudioPlayback.cpp

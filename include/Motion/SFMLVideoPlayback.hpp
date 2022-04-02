@@ -11,6 +11,7 @@
 #include <SFML/Graphics/Image.hpp>
 
 #include <Motion/VideoPlaybackBase.hpp>
+#include <Motion/Macros.hpp>
 
 namespace mt
 {
@@ -25,10 +26,10 @@ namespace mt
         void draw(sf::RenderTarget& target, sf::RenderStates states) const;
 
     public:
-        SFMLVideoPlayback(DataSource& DataSource, sf::Color BufferColor = sf::Color::Black);
-        const sf::Color GetBufferColor() const;
-        void SetBufferColor(sf::Color BufferColor);
-        sf::Image GetLastFrame() const;
+	    MOTION_API SFMLVideoPlayback(DataSource& DataSource, sf::Color BufferColor = sf::Color::Black);
+	    MOTION_API const sf::Color GetBufferColor() const;
+	    MOTION_API void SetBufferColor(sf::Color BufferColor);
+	    MOTION_API sf::Image GetLastFrame() const;
 
     protected:
         void CreateTexture(int Width, int Height);

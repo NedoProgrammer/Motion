@@ -6,7 +6,7 @@ Please, only use this project in CMake with `FetchContent()`. The CSFML and SFML
 include(FetchContent)
 FetchContent_Declare(
         motion
-        GIT_REPOSITORY https://github.com/NedoProgrammer/MotionPP
+        GIT_REPOSITORY https://github.com/nedoxff/MotionPP
         GIT_TAG fc3723db02256469d2fdabf87842a1bbb72a6847
 )
 message(STATUS "Fetching Motion..")
